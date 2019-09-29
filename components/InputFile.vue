@@ -6,6 +6,7 @@
         type="file"
         class="custom-file-input"
         aria-describedby="inputGroupFileAddon02"
+        @input="updateValue"
       />
       <label
         class="custom-file-label"
@@ -18,7 +19,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    updateValue(e) {
+      this.$emit('getFileData', e.target.files[0])
+    }
+  }
+}
 </script>
 
 <style></style>

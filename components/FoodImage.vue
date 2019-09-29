@@ -2,7 +2,7 @@
   <div class="food-image" style="">
     <img
       class="img-fluid img-thumbnail rounded mh-100 mx-auto d-block"
-      src="~/assets/pasta.jpg"
+      :src="image"
       alt=""
     />
     <slot name="input-file" />
@@ -10,7 +10,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    image: {
+      type: [Object, String],
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped></style>
