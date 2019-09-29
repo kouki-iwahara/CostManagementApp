@@ -196,4 +196,7 @@ export default {
 .comment-form {
   margin: 20px 0;
 }
+.input-group-append select {
+  margin-left: 5px;
+}
 </style>
