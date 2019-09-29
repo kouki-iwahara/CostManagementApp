@@ -61,7 +61,7 @@
         <add-food-form />
       </div>
       <div class="col-sm-12">
-        <menu-table />
+        <recipe-table />
       </div>
       <div class="col-sm-12">
         <comment-form />
@@ -80,7 +80,7 @@
 import FoodImage from '~/components/FoodImage.vue'
 import FoodContent from '~/components/FoodContent.vue'
 import AddFoodForm from '~/components/AddFoodForm.vue'
-import MenuTable from '~/components/MenuTable.vue'
+import RecipeTable from '~/components/RecipeTable.vue'
 import CommentForm from '~/components/CommentForm.vue'
 import InputLg from '~/components/inputLg.vue'
 import inputFile from '~/components/inputFile.vue'
@@ -92,7 +92,7 @@ export default {
     InputLg,
     CommentForm,
     AddFoodForm,
-    MenuTable,
+    RecipeTable,
     inputFile
   }
 }

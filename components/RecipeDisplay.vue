@@ -56,7 +56,7 @@
     <!-- row -->
     <div class="row offset-3">
       <div class="col-sm-12">
-        <menu-table />
+        <recipe-table />
       </div>
     </div>
   </div>
@@ -67,14 +67,14 @@
 import FoodImage from '~/components/FoodImage.vue'
 import FoodContent from '~/components/FoodContent.vue'
 import CommentForm from '~/components/CommentForm.vue'
-import MenuTable from '~/components/MenuTable.vue'
+import RecipeTable from '~/components/RecipeTable.vue'
 
 export default {
   components: {
     FoodImage,
     FoodContent,
     CommentForm,
-    MenuTable
+    RecipeTable
   }
 }
 </script>
