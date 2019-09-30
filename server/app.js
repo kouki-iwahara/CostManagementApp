@@ -8,7 +8,7 @@ const config = require('../nuxt.config.js')
 const passport = require('./passportAuth').passport
 
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(passport.initialize())
+// sessionの設定
 app.use(
   session({
     secret: 'cost management',
