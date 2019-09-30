@@ -2,7 +2,7 @@
   <div class="content container-fluid">
     <div class="row offset-3">
       <div class="content_image col-sm-12">
-        <food-image />
+        <food-image :image="food.image" />
       </div>
       <!-- /content_image -->
       <div class="content_form col-sm-12">
@@ -43,20 +43,18 @@
         </div>
       </div>
       <div class="content_text col-sm-12">
-        <comment-form>
-          <div class="content_text_box border border-dark">
-            <p>
-              コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります
-            </p>
-          </div>
-        </comment-form>
+        <div class="content_text_box border border-dark">
+          <p>
+            コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります
+          </p>
+        </div>
       </div>
       <!-- /content_form -->
     </div>
     <!-- row -->
     <div class="row offset-3">
       <div class="col-sm-12">
-        <menu-table />
+        <recipe-table />
       </div>
     </div>
   </div>
@@ -66,15 +64,20 @@
 <script>
 import FoodImage from '~/components/FoodImage.vue'
 import FoodContent from '~/components/FoodContent.vue'
-import CommentForm from '~/components/CommentForm.vue'
-import MenuTable from '~/components/MenuTable.vue'
+import RecipeTable from '~/components/RecipeTable.vue'
 
 export default {
   components: {
     FoodImage,
     FoodContent,
-    CommentForm,
-    MenuTable
+    RecipeTable
+  },
+  data() {
+    return {
+      food: {
+        image: require('~/assets/pasta.jpg')
+      }
+    }
   }
 }
 </script>

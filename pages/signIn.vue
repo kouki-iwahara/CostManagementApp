@@ -3,17 +3,17 @@
     <div class="wrapper">
       <div class="login-form row d-flex align-items-center">
         <div class="col-sm-12">
-          <form action="" method="post" name="Login_Form" class="form-signin">
+          <form action="/signin" method="post" class="form-signin">
             <h3 class="form-signin-heading">Sign In</h3>
 
-            <label for="username">Username</label>
-            <span>(test)</span>
+            <label for="email">Email</label>
+            <span>(test@test.com)</span>
             <input
-              id="username"
-              type="text"
+              id="email"
+              type="email"
               class="form-control"
-              name="Username"
-              placeholder="Username"
+              name="email"
+              placeholder="email"
               required=""
               autofocus=""
             />
@@ -23,7 +23,7 @@
               id="password"
               type="password"
               class="form-control"
-              name="Password"
+              name="password"
               placeholder="Password"
               required=""
             />
