@@ -139,7 +139,7 @@ export default {
     }
   },
   methods: {
-    // 映画のイメージ画像データを取得し、プレビューを作成
+    // イメージ画像データを取得し、プレビューを作成
     getFileData(fileData) {
       this.selectedFile = fileData
       // ファイルを選んでなければ初期値に戻す
@@ -158,7 +158,7 @@ export default {
         return
       }
       const reader = new FileReader()
-      reader.onload = fileData => {
+      reader.onload = (fileData) => {
         this.food.image = fileData.target.result
       }
       reader.readAsDataURL(selectedFile)

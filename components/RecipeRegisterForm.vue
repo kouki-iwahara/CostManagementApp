@@ -2,9 +2,9 @@
   <div class="content container-fluid">
     <div class="row offset-3">
       <div class="content_image col-sm-12">
-        <food-image>
+        <food-image :image="food.image">
           <template slot="input-file">
-            <input-file />
+            <input-file @getFileData="getFileData" />
           </template>
         </food-image>
       </div>
@@ -64,7 +64,7 @@
         <recipe-table />
       </div>
       <div class="col-sm-12">
-        <comment-form />
+        <comment-form v-model="food.comment" />
       </div>
       <div class="btn-form col-sm-6">
         <button type="button" class="btn btn-danger btn-block btn-lg">
@@ -94,6 +94,41 @@ export default {
     AddFoodForm,
     RecipeTable,
     inputFile
+  },
+  data() {
+    return {
+      food: {
+        comment: '',
+        image: require('~/assets/pasta.jpg')
+      },
+      selectedFile: ''
+    }
+  },
+  methods: {
+    // イメージ画像データを取得し、プレビューを作成
+    getFileData(fileData) {
+      this.selectedFile = fileData
+      // ファイルを選んでなければ初期値に戻す
+      if (!this.selectedFile) {
+        this.food.image = require('~/assets/pasta.jpg')
+        return
+      }
+      // プレビューを作成
+      this.previewImage(this.selectedFile)
+    },
+    // 画像のURLを取得しプレビューを表示する
+    previewImage(selectedFile) {
+      // FileReaderに対応しているか
+      if (!window.FileReader) {
+        alert('表示できません')
+        return
+      }
+      const reader = new FileReader()
+      reader.onload = (fileData) => {
+        this.food.image = fileData.target.result
+      }
+      reader.readAsDataURL(selectedFile)
+    }
   }
 }
 </script>
