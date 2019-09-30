@@ -3,10 +3,21 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const bodyParser = require('body-parser')
+const session = require('express-session')
 const config = require('../nuxt.config.js')
 const passport = require('./passportAuth').passport
+
 app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(passport.initialize())
+app.use(
+  session({
+    secret: 'cost management',
+    resave: false,
+    saveUninitialized: true
+  })
+)
 app.use(passport.initialize())
+app.use(passport.session())
 
 // Import and Set Nuxt.js options
 const signinRouter = require('./routes/signin')

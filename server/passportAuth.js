@@ -3,8 +3,7 @@ const app = express()
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
-// const session = require('express-session')
-// const models = require('../models')
+const models = require('./models')
 
 // シリアライズ処理でidを渡す
 // passport.serializeUser((id, done) => {
@@ -21,7 +20,7 @@ const LocalStrategy = require('passport-local').Strategy
 // })
 
 app.use(passport.initialize())
-
+// emailとpasswordでsignin処理
 passport.use(
   'local-signin',
   new LocalStrategy(
@@ -31,13 +30,20 @@ passport.use(
       passReqToCallback: true
     },
     (req, email, password, done) => {
-      console.log(req.body)
-      if (email === 'test@test.com' && password === '123456') {
-        return done(null, email)
-      } else {
-        console.log('error')
-        return done(null, false, { message: '入力が正しくありません。' })
-      }
+      // 入力されたメールからuser情報を取得
+      models.user.findOne({ where: { email } }).then((user) => {
+        console.log(user)
+        // userが取得できない
+        if (!user) {
+          return done(null, false, { message: 'emailが正しくありません' })
+        }
+        // passwordが一致しない
+        if (user.password !== password) {
+          return done(null, false, { message: 'passwordが正しくありません' })
+        }
+        // どちらも一致
+        return done(null, user)
+      })
     }
   )
 )
