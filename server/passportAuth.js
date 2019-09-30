@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+
 // const session = require('express-session')
 // const models = require('../models')
 
@@ -22,13 +23,15 @@ const LocalStrategy = require('passport-local').Strategy
 app.use(passport.initialize())
 
 passport.use(
-  'local-login',
+  'local-signin',
   new LocalStrategy(
     {
       usernameField: 'email',
-      passwordField: 'password'
+      passwordField: 'password',
+      passReqToCallback: true
     },
-    (email, password, done) => {
+    (req, email, password, done) => {
+      console.log(req.body)
       if (email === 'test@test.com' && password === '123456') {
         return done(null, email)
       } else {
@@ -38,3 +41,7 @@ passport.use(
     }
   )
 )
+
+module.exports = {
+  passport
+}
